@@ -1,0 +1,5 @@
+package lixue.chapter01
+
+object Greeting extends App {
+  
+}

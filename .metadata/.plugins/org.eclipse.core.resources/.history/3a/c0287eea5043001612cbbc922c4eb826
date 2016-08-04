@@ -1,0 +1,24 @@
+object worksheet_forTest {
+
+  val l = List("Monday", "Tuesday", "Wednesday")  //> l  : List[String] = List(Monday, Tuesday, Wednesday)
+  val ll = "Thursday" :: l                        //> ll  : List[String] = List(Thursday, Monday, Tuesday, Wednesday)
+  val lll = 1 ::: ll
+  for (
+    s <- l   //generator
+  ) println(s)                                    //> Monday
+                                                  //| Tuesday
+                                                  //| Wednesday
+
+  for {
+    s <- l
+    if (s.length > 6) //filter
+  } println(s)                                    //> Tuesday
+                                                  //| Wednesday
+  
+  val result_for = for {
+    s <- l
+    s1 = s.toUpperCase()  //variable binding
+    if (s1 != "")
+  } yield (s1)                                    //> result_for  : List[String] = List(MONDAY, TUESDAY, WEDNESDAY)
+
+}

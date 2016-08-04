@@ -1,0 +1,65 @@
+object worksheet_ListTest {
+  //基本用法
+  val a = List(1, 2, 3)                           //> a  : List[Int] = List(1, 2, 3)
+  
+  val b = 0 :: a                                  //> b  : List[Int] = List(0, 1, 2, 3)
+  
+  val c = "x" :: "y" :: "z" :: Nil                //> c  : List[String] = List(x, y, z)
+  
+  val z = a ::: c                                 //> z  : List[Any] = List(1, 2, 3, x, y, z)
+  
+  a.head                                          //> res0: Int = 1
+  
+  c.tail                                          //> res1: List[String] = List(y, z)
+  
+  a.isEmpty                                       //> res2: Boolean = false
+  
+  Nil.isEmpty                                     //> res3: Boolean = true
+  
+  def walkthru(l: List[Int]): String = {
+    if(l.isEmpty) ""
+      else
+      l.head.toString + "" + walkthru(l.tail)
+  }                                               //> walkthru: (l: List[Int])String
+  walkthru(a)                                     //> res4: String = 123
+  //高级用法
+  a.filter(x => x % 2 == 1)                       //> res5: List[Int] = List(1, 3)
+  
+  "99 Red Balloons".toList                        //> res6: List[Char] = List(9, 9,  , R, e, d,  , B, a, l, l, o, o, n, s)
+  
+  "99 Red Balloons".toList.filter(x => Character.isDigit(x))
+                                                  //> res7: List[Char] = List(9, 9)
+  //takeWhile为True，继续拿值，False终止
+  "99 Red Balloons".toList.takeWhile(x => x!= 'B')//> res8: List[Char] = List(9, 9,  , R, e, d,  )
+  
+  //List-Map,做映射，相当于变量每个元素然后做相应的操作
+  a.filter(_ % 2 ==1)                             //> res9: List[Int] = List(1, 3)
+  a.filter(_ % 2 ==1).map(_ + 10)                 //> res10: List[Int] = List(11, 13)
+  
+  val q = List(a, List(5, 6))                     //> q  : List[List[Int]] = List(List(1, 2, 3), List(5, 6))
+  q.map( _.filter( _ % 2 == 0))                   //> res11: List[List[Int]] = List(List(2), List(6))
+  q.flatMap( _.filter( _ % 2 == 0))               //> res12: List[Int] = List(2, 6)
+  
+  //ReduceLeft
+  a.reduceLeft((x, y) => x + y)                   //> res13: Int = 6
+  a.reduce( _ + _ )                               //> res14: Int = 6
+  //foldLeft
+  a.foldLeft(0)( _ + _)                           //> res15: Int = 6
+  a.foldLeft(1)( _ * _)                           //> res16: Int = 6
+  
+  1 to 10 by 2                                    //> res17: scala.collection.immutable.Range = Range(1, 3, 5, 7, 9)
+  (1 to 10 by 2).toList                           //> res18: List[Int] = List(1, 3, 5, 7, 9)
+  1 until 5                                       //> res19: scala.collection.immutable.Range = Range(1, 2, 3, 4)
+  //Map
+  val p = Map(1 -> "David", 9 ->"lili")           //> p  : scala.collection.immutable.Map[Int,String] = Map(1 -> David, 9 -> lili)
+                                                  //| 
+  p(1)                                            //> res20: String = David
+  p.contains(1)                                   //> res21: Boolean = true
+  p.keys                                          //> res22: Iterable[Int] = Set(1, 9)
+  p.values                                        //> res23: Iterable[String] = MapLike(David, lili)
+  p + (8 -> "dd")                                 //> res24: scala.collection.immutable.Map[Int,String] = Map(1 -> David, 9 -> li
+                                                  //| li, 8 -> dd)
+  p - 8                                           //> res25: scala.collection.immutable.Map[Int,String] = Map(1 -> David, 9 -> li
+                                                  //| li)
+  p ++ List(2 -> "cc", 5 -> "dd")                                                
+}

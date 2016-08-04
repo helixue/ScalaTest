@@ -1,0 +1,14 @@
+object worksheet_forTest {
+
+  val l = List("AA", "BB", "CC")                  //> l  : List[String] = List(AA, BB, CC)
+
+  for (
+    s <- l   //generator
+  ) println(s)                                    //> AA
+                                                  //| BB
+                                                  //| CC
+  for (
+  s <- l
+  if (s.length > 3)
+  )println(s)
+}

@@ -1,0 +1,21 @@
+object worksheet_forTest {
+
+  val l = List("Monday", "Tuesday", "Wednesday")
+  val ll = "Thursday" :: l
+  val lll = 1 ::: ll
+  for (
+    s <- l   //generator
+  ) println(s)
+
+  for {
+    s <- l
+    if (s.length > 6) //filter
+  } println(s)
+  
+  val result_for = for {
+    s <- l
+    s1 = s.toUpperCase()  //variable binding
+    if (s1 != "")
+  } yield (s1)
+
+}

@@ -1,0 +1,11 @@
+object worksheet_lixue {
+
+def hello(name:String):String = {
+  
+  s"hello, ${name}"
+
+}                                                 //> hello: (name: String)String
+
+hello("Lixue")
+  
+}

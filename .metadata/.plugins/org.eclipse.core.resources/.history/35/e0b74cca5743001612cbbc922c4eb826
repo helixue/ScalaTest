@@ -1,0 +1,46 @@
+object worksheet_ListTest {
+  //基本用法
+  val a = List(1, 2, 3, 4)
+  
+  val b = 0 :: a
+  
+  val c = "x" :: "y" :: "z" :: Nil
+  
+  val z = a ::: c
+  
+  a.head
+  
+  c.tail
+  
+  a.isEmpty
+  
+  Nil.isEmpty
+  
+  def walkthru(l: List[Int]): String = {
+    if(l.isEmpty) ""
+      else
+      l.head.toString + "" + walkthru(l.tail)
+  }
+  walkthru(a)
+  //高级用法
+  a.filter(x => x % 2 == 1)
+  
+  "99 Red Balloons".toList
+  
+  "99 Red Balloons".toList.filter(x => Character.isDigit(x))
+  //takeWhile为True，继续拿值，False终止
+  "99 Red Balloons".toList.takeWhile(x => x!= 'B')
+  
+  //List-Map,做映射，相当于变量每个元素然后做相应的操作
+  a.filter(_ % 2 ==1)
+  a.filter(_ % 2 ==1).map(_ + 10)
+  
+  val q = List(a, List(5, 6))
+  q.map( _.filter( _ % 2 == 0))
+  q.flatMap( _.filter( _ % 2 == 0))
+  
+  //ReduceLeft
+  a.reduceLeft((x, y) => x + y)
+  a.reduce( _ + _ )
+  //foldLeft
+}

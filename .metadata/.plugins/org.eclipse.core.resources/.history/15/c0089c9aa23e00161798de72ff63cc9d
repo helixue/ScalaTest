@@ -1,0 +1,18 @@
+object worksheet_lixue {
+
+  def hello(name: String): String = {
+
+    s"hello, ${name}"
+
+  } //> hello: (name: String)String
+
+  hello("Lixue") //> res0: String = hello, Lixue
+
+  def hello2(name: String) = {
+
+    s"hello, ${name}"
+
+  }
+  
+  hello2("Scala")
+}

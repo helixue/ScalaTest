@@ -1,0 +1,17 @@
+object worksheet_tryAndmatch {
+
+  val result_try = try {
+    Integer.parseInt("dog")
+  } catch {
+    case _ => 0
+  } finally {
+    println("alway be printed")
+  }
+
+  val code = 3
+  val result_match = code match {
+    case 1 => "one"
+    case 2 => "two"
+    case _ => "others"
+  }
+}

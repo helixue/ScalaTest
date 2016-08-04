@@ -1,0 +1,9 @@
+object worksheet_forTest {
+
+  val l = List("AA", "BB", "CC")
+
+  for (
+    s <- l
+  ) println(s)
+
+}

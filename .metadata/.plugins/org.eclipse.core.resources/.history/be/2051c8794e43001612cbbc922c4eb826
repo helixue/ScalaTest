@@ -1,0 +1,12 @@
+object worksheet_sumTest {
+  
+  def sum(f: Int => Int)(a: Int)(b: Int): Int = {
+  
+  def loop(n: Int, acc: Int): Int = 
+    if (n > b) acc
+    else loop(n + 1, acc + f(n))
+    
+  loop(a, 0)
+  }
+  sum(x => x)(1)(5)
+}
